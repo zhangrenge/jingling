@@ -1,0 +1,80 @@
+ @import "../assets/css/weui.wxss";
+.container-box {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.camera-box {
+  width: 100vw;
+  height: 100%;
+}
+
+
+.room-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #666;
+  font-size: 16px;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+
+.img-box {
+  position: relative;
+  display:inline-block;
+  height: 50px;
+  width: 13.6vw;
+  vertical-align: middle;
+  margin:0 5px;
+}
+.img-view {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+.img-view:active{
+  opacity: 0.55
+}
+.text-view {
+  position: relative;
+  display: block;
+  color: #ffffff;
+  width: 100%;
+  font-size:10px;
+  text-align: center;
+} 
+.operate {
+  position:absolute;
+  bottom:2vh;
+  left:0;
+  right:0;
+  text-align:center;
+  width:70vw;
+  margin:auto;
+
+}
+.close {
+  position:absolute;
+  padding-left:5vw;
+  padding-right:5vw;
+  width:50rpx;
+  height:60rpx;
+}
+
+.close.i-icon{
+  color:#eee;
+  font-size:60rpx;
+  font-family: "asiar";
+  top:3.2vh;
+  text-align:center;
+  line-height:40px!important;
+}
+.close.i-icon.float{
+  display:block;
+  color : #eee;
+  font-size : 60rpx;
+  top: 3.5vh;
+} 

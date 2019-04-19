@@ -1,0 +1,104 @@
+<!-- detail.wxml -->
+<import src="../../../component/wetoast/wetoast.wxml" />
+<view class='container-mine'>
+ 
+  <view class='column text-s-big margin-t-twenty bg-white'>
+
+     <view class='row-space-item'>
+      <image src='../../../image/meetingName.png' class='img-type'></image>
+      <text class='text-c-black'>会议主题：</text>
+      <text class='text-c-gray' style='width:450rpx;'>{{meetingName}}</text>
+    </view>
+    
+    <view class='row-space-item'>
+     <image src='../../../image/meetingRoom.png' class='img-type'></image>
+      <text class='text-c-black'>会议地点：</text>
+      <text class='text-c-gray' style='width:450rpx;'>{{meetingRoom}}</text>
+    </view>
+     <view class='row-space-item'>
+     <image src='../../../image/meetingTime.png' class='img-type'></image>
+      <text class='text-c-black'>会议时间：</text>
+      <text class='text-c-gray' style='width:450rpx;'>{{meetingTime}}</text>
+    </view>
+     <view class='row-space-item'>
+     <image src='../../../image/applyUser.png' class='img-type'></image>
+      <text class='text-c-black'>预定人员：</text>
+      <text class='text-c-gray' style='width:450rpx;'>{{applyUser}}</text>
+    </view>
+    <view class='row-space-item'>
+     <image src='../../../image/applyPhone.png' class='img-type'></image>
+      <text class='text-c-black'>联系方式：</text>
+      <text class='text-c-gray' style='width:450rpx;'>{{applyPhone}}</text>
+    </view>
+    
+    <view class='row-space-item'>
+     <image src='../../../image/meetingNum.png' class='img-type'></image>
+      <text class='text-c-black'>申请编号：</text>
+      <text class='text-c-gray' style='width:450rpx;'>{{meetingNum}}</text>
+    </view>
+     <view class='row-space-item'>
+     <image src='../../../image/meetingState.png' class='img-type'></image>
+      <text class='text-c-black'>会议状态：</text>
+      <text class='text-c-gray' style='width:450rpx;'>{{meetingState}}</text>
+    </view>
+     <view class='row-space-remark'>
+     <image src='../../../image/participantUser.png' class='img-remark'></image>
+      <text class='text-c-black'>参会人员：</text>
+      <text class='text-c-gray' style='width:450rpx;'> {{meetingUser}}</text>
+    </view>
+  </view>
+</view>
+
+
+<view class='container-mine'>
+ 
+  <view class='column text-s-big margin-t-twenty bg-white'>
+
+     <view class='row-space-remark'>
+      <image src='../../../image/remark.png' class='img-remark'></image>
+      <text class='text-c-black' >会议内容：</text>
+      <text class='text-c-gray' style='width:450rpx'>{{remark}}</text>
+    </view>
+  </view>
+</view>
+<view class='tip'>
+<view><text class='text-c-gray'>注:</text></view>
+
+<view><text class='text-c-gray'>1:如果一个月内有三次预定会议室成功未使用的情况，将会取消本月预定会议室的资格</text></view>
+<view><text class='text-c-gray'>2:管理员有权限修改已预定成功的会议</text></view>
+</view>
+
+<view class='button_style'>
+
+<block wx:if="{{operationFlag == true}}">
+<block wx:if="{{ntime>=stime}}">
+<block wx:if="{{state=='1'}}">
+<view bindtap='bindStartMeeting'>
+<text>开始会议</text>
+</view>
+</block>
+<block wx:if="{{state=='2'}}">
+<view bindtap='bindFinishMeeting'>
+<text>结束会议</text>
+</view>
+</block>
+</block>
+<block wx:if="{{ntime<stime}}">
+<block wx:if="{{state=='1'}}">
+<view bindtap='bindCancleMeeting'>
+<text>取消会议</text>
+</view>
+<view bindtap='updateMeetingReserve'>
+<text>修改会议</text>
+</view>
+</block>
+</block>
+</block>
+
+</view>
+
+<template is="wetoast" data="{{...__wetoast__}}" />
+
+
+
+

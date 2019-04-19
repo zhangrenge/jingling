@@ -1,0 +1,121 @@
+<view class='container'>
+
+  <!--申请人简略信息  -->
+  <view class='apply_user'>
+    <!--信息栏  -->
+    <view class='user_img'>
+      <image class='user_image' src="{{StampAudit.headImage==null?'../../../image/01.jpg':StampAudit.headImage}}"></image>
+    </view>
+    <!--头像右侧  -->
+    <view>
+      <view class='apply_userName'>
+        <text>{{userName}}</text>
+      </view>
+      <view class='apply_state'>
+        <text>{{actBaseInfos[size-1].commentAudit}}</text>
+      </view>
+    </view>
+  </view>
+  <!--审批图章  -->
+
+  <!--分割线  -->
+  <view class='boder_line'></view>
+
+  <!--申请人申请信息  -->
+
+  <view class='info_apply_center'>
+    <!--审批编号  -->
+    <view class='info_apply_innercenter'>
+      <text class='text_apply_info'>审批编号</text>
+      <text class='text_apply_text'>{{taskId}}</text>
+    </view>
+    <!--申请人员  -->
+    <view class='info_apply_innercenter'>
+      <text class='text_apply_info'>申请人员</text>
+      <text class='text_apply_text'>{{userName}}</text>
+    </view>
+    <!--所属部门  -->
+    <view class='info_apply_innercenter'>
+      <text class='text_apply_info'>所属部门</text>
+      <text class='text_apply_text'>{{department}}</text>
+    </view>
+    <!--证明类型  -->
+    <view class='info_apply_innercenter'>
+      <text class='text_apply_info'>证明类型</text>
+      <text class='text_apply_text'>{{stampType}}</text>
+    </view>
+    <!--用印日期  -->
+    <view class='info_apply_innercenter'>
+      <text class='text_apply_info'>用印日期</text>
+      <text class='text_apply_text'>{{applyDate}}</text>
+    </view>
+    <!--用印是由  -->
+    <view class='info_apply_innercenter'>
+      <text class='text_apply_info'>用印事由</text>
+      <text class='text_apply_text'>{{reason}}</text>
+    </view>
+    
+  </view>
+
+
+  <!--审批流程显示  -->
+ 
+    <view class='apply_flow'>
+      <!--审批人 -->
+       <block wx:for="{{actBaseInfos}}"> 
+        <view class='apply_flow_style_fa'>
+          <view class='apply_flow_style_left'>
+         <image class='apply_tip' src='../../../image/green-tip.png'></image>
+         <view class='apply_line'></view>
+          </view>
+          <view class='apply_flow_style_right'>
+            <view class='apply_flow_style_block'></view>
+            <view>
+                <image class='user_image' src="{{item.headImage==null?'../../../image/01.jpg':imgBaseUrl + item.headImage}}"></image>  
+            </view>
+            <view>
+              <view>
+                <text class='apply_flow_font_name'>{{item.createBy!=null?item.createBy:'未签收'}}</text>
+                <text class='apply_flow_font_date'>{{item.createDate}}</text>
+              </view>
+              <view>
+                <view class='apply_flow_font_audit'>{{item.commentAudit}}</view>
+                <view class='apply_flow_font_reason'>
+                  <text wx:if="{{item.commentReason!='null'}}" style=" word-break: break-all;width:90%"> {{item.commentReason}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+       </block> 
+    </view>
+
+  <!--审核按钮  -->
+
+  <view class='button_style'>
+    <!--同意 拒绝  -->
+    <block wx:if="{{taskDefKey!='modifyApply'}}">
+    <view bindtap='bind_agree'>
+      <text>同意</text>
+    </view>
+    <!-- <view class='right_line'></view> -->
+    <block wx:if="{{taskDefKey!='hr1'&&taskDefKey!='hr2'}}">
+      <view bindtap='bind_rebut'>
+        <text>驳回</text>
+      </view>
+    </block>
+    <block wx:if="{{taskDefKey=='hrLeader'||taskDefKey=='hr1'||taskDefKey=='hr2'}}">
+      <view bindtap='bind_endFlow' >
+        <text>申请无效</text>
+      </view>
+    </block>
+   </block>
+   <block wx:else>
+      <view bindtap='bind_endFlow' >
+        <text>结束</text>
+      </view>
+   </block>
+  </view>
+
+</view>

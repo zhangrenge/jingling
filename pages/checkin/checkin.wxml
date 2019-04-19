@@ -1,0 +1,94 @@
+<!-- 搜索 -->
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-cell__bd">
+      <picker mode="date" value="{{date1}}" start="2019-01-01" end="2050-01-01" bindchange="startDateChange">
+        <view class="weui-input">{{date1}}</view>
+      </picker>
+    </view>
+    <view class="weui-cell_">-</view>
+    <view class="weui-cell__bd">
+      <picker mode="date" value="{{date2}}" start="2019-01-01" end="2050-01-01" bindchange="endDateChange">
+        <view class="weui-input">{{date2}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="weui-search-bar__cancel-btn" bindtap="okInput">确定</view>
+</view>
+<scroll-view class="scroll-list" style="height: {{clientHeight?clientHeight+'px':'auto'}};" scroll-top="{{scrollTop}}" scroll-y="true" bindscrolltolower="loadmore">
+  <view>
+    <view class="tr bg-w">
+      <view class="th">姓名</view>
+      <view class="th">员工号</view>
+      <view class="th">状态</view>
+    </view>
+    <block wx:for="{{totalData}}" wx:key="{{code}}">
+      <view class="tr {{index % 2 == 0 ? 'bg-g' : ''}}" data-index='{{index}}' bindtap='checkDetail'>
+        <view class="td">{{item.userName?item.userName:""}}</view>
+        <view class="td">{{item.employee_no=='' ? '--':item.employee_no}}</view>
+        <view class="td  {{(item.status !=1) ? 'redcolor' : ''}}">{{item.status !=1 ? status[1] :status[0]}}</view>
+      </view>
+    </block>
+  </view>
+  <!--加载更多  -->
+  <view class="hot-box-more">
+    <view wx:if="{{!hideBottom}}">
+      <view class="weui-loadmore">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{loadmoretxt}}</view>
+      </view>
+    </view>
+    <view wx:else class='align'>
+      <text style='font-size:14px;' wx:if="{{refresh}}">{{loadmoretxt}}</text>
+      <view wx:else style="font-size:14px;padding-top:5%;height:{{clientHeight?clientHeight+'px':'auto'}};" bindtap="refreshData">
+        {{loadmoretxt}}
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- 查看详情 -->
+<modal hidden="{{detail}}" title="{{userName}}" confirm-text="关闭" bindcancel="detailCancel" bindconfirm="detailCancel" no-cancel="{{nocancel}}" catchtouchmove="ture">
+  <scroll-view class="scroll-list" style="max-height: {{modalHeight?modalHeight+'px':'auto'}};" scroll-top="{{modalScrollTop}}" scroll-y="true">
+    <view class="page__bd">
+      <view class="weui-form-preview"  wx:for="{{userData}}">
+
+        <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">日期</view>
+            <view class="weui-form-preview__value">{{item.sign_date ?item.sign_date: '--'}} {{item.day ?item.day: ''}}</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">上班</view>
+            <view class="weui-form-preview__value">{{item.start_work_time ? item.start_work_time:'--'}}</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">上班地点</view>
+            <view class="weui-form-preview__value">{{item.sign_addr ? item.sign_addr:'--'}}</view>
+          </view>
+           <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">上班状态</view>
+            <view class="weui-form-preview__value  {{(item.sign_state_m !=1) ? 'redcolor' : ''}}">{{item.sign_state_m_status ? item.sign_state_m_status:'--'}}</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">下班</view>
+            <view class="weui-form-preview__value"> {{item.end_work_time ? item.end_work_time : '--'}}</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">下班地点</view>
+            <view class="weui-form-preview__value">{{item.xbsign_addr ? item.xbsign_addr : '--'}}</view>
+          </view>
+           <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">下班状态</view>
+            <view class="weui-form-preview__value {{(item.sign_state_a !=1) ? 'redcolor' : ''}}">{{item.sign_state_a_status ? item.sign_state_a_status:'--'}}</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">工作时长</view>
+            <view class="weui-form-preview__value">{{item.duration? item.duration : '--'}}</view>
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+  </scroll-view>
+</modal>

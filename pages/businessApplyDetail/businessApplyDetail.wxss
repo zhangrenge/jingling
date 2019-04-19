@@ -1,0 +1,310 @@
+/* detail.wxss */
+page{
+  height:100%;
+  background-color: #efefef;  
+}
+
+.container-mine {
+  flex-direction: column;
+  display: flex;
+}
+
+.row-space {
+  height: 130rpx;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.row-space-item {
+  height: 80rpx;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+
+.row-space-item_reason {
+
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.row {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.row-left {
+  height: 80rpx;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.column {
+  flex-direction: column;
+  display: flex;
+}
+
+.img-head {
+  width: 100rpx;
+  height: 100rpx; 
+  border-radius: 50%;
+}
+
+.img-type {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.img-tip {
+  margin-left: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.text-s-big {
+  font-size: 30rpx;
+}
+
+.text-s-mid {
+  font-size: 24rpx;
+}
+
+.text-c-black {
+  color: #333333;
+}
+
+.text-c-gray {
+  color: #999999;
+}
+
+.text-c-light-gray {
+  color: #cccccc;
+}
+
+.text-c-green {
+  color: #65ca00;
+}
+
+.text-c-blue {
+  color: #24ccaa;
+}
+
+.text-c-light-blue {
+  color: #5ab9ff;
+}
+
+.margin-t-twenty {
+  margin-top: 20rpx;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.btn-approval {
+  width: 100%;
+  height: 80rpx;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx;
+}
+
+.btn-approval-item {
+  flex-direction: row;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  width: 2rpx;
+  height: 50rpx;
+  margin-left: 55rpx;
+  background-color: #d8d8d8;
+}
+
+.line-inner {
+  width: 2rpx;
+  height: 75rpx;
+  margin-left: 55rpx;
+  background-color: #d8d8d8;
+}
+
+.item-parent {
+  width: 100%;
+  height: 200rpx;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.item-left {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+}
+
+.item-right {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  border-radius: 15rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.approval-parent {
+  width: 400rpx;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.approval-type {
+  width: 120rpx;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-right-top {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.weight-1 {
+  flex-grow: 1
+}
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+/*content*/
+
+.drawer_box {
+  width: 650rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #fafafa;
+  margin: -150px 50rpx 0 50rpx;
+  border-radius: 3px;
+}
+
+.drawer_title {
+  padding: 15px;
+  font: 20px "microsoft yahei";
+  text-align: center;
+}
+
+.drawer_content {
+  height: 180px;
+  overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+
+.drawer_btn_view {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.btn_ok {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding-bottom: 10px;
+  font: 20px "microsoft yahei";
+  color: #3cc51f;
+}
+
+.input_base {
+  width: 80%;
+  border: 2rpx solid #ccc;
+  padding: 10rpx;
+  margin-left: 8%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-ellipsis {
+  overflow : hidden;
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+
+.attachment-view {
+  height: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: flex-end;
+}
+
+.img-add {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.img-attachment {
+  margin-top: 10rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.img-close {
+  margin-top: -95rpx;
+  margin-left: 60rpx;
+  width: 35rpx;
+  height: 35rpx;
+}

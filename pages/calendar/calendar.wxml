@@ -1,0 +1,142 @@
+<!--calendar.wxml-->
+<!-- <view class="topBar">
+    <view class="whichDate">{{toMonth}}月{{toDate}}日</view>
+    <view class="whichYear">
+        <text>{{toYear}}年\n</text>
+    </view>
+    <view class="nongliDetail">
+        {{nongliDetail}}
+    </view>
+</view> -->
+
+<view class='homepage'>
+
+  <view class="topBar">
+    <view class="{{level=='19'? 'left_topBar' : 'left_topBar1'}}" bindtap="spread1">
+      本月统计
+      <image src="{{spreadImage1}}" class="spread-image"></image>
+    </view>
+    <table style="margin-top:5px;height:30px;border-color:rgb(239,239,239);border-left-style:solid;border-width:1px">
+      <tr>
+        <td valign="top"></td>
+      </tr>
+    </table>
+    <view class="{{level=='19'? 'left_topBar' : 'left_topBar1'}}" bindtap="help">
+      统计说明
+      <image src="../../image/explain.png" class="spread-image"></image>
+    </view>
+    <block wx:if="{{level=='19'}}">
+      <table style="margin-top:5px;height:30px;border-color:rgb(239,239,239);border-left-style:solid;border-width:1px">
+        <tr>
+          <td valign="top"></td>
+        </tr>
+      </table>
+      <view class="left_topBar" bindtap="record">
+        员工记录
+        <image src="{{spreadImage1}}" class="spread-image"></image>
+      </view>
+    </block>
+
+  </view>
+
+  <view class="{{spreadStyle1}}">
+    <view style="width:100%;height:1px;padding:0px;background-color:rgb(239,239,239);overflow:hidden;"></view>
+    <view class="area">
+      <view class="left_area">
+        <view class="">出勤</view>
+        <view class="wenzi">迟到</view>
+        <view class="wenzi">旷工</view>
+        <view class="wenzi">请假</view>
+      </view>
+
+      <view class="right_area">
+        <view class="sign-normal">{{chuqin}}天</view>
+        <view class="sign-late wenzi">{{chidao}}次</view>
+        <view class="wenzi">{{kuanggong}}次</view>
+        <view class="wenzi">{{qingjia}}次</view>
+      </view>
+      <table style="margin-top:10px;height:100px;border-color:rgb(239,239,239);border-left-style:solid;border-width:1px">
+        <tr>
+          <td valign="top"></td>
+        </tr>
+      </table>
+
+      <view class="left_area">
+        <view class="">正常</view>
+        <view class="wenzi">早退</view>
+        <view class="wenzi">缺卡</view>
+
+      </view>
+
+      <view class="right_area">
+        <view class="sign-normal">{{zhengchang}}天</view>
+        <view class="sign-late wenzi">{{zaotui}}次</view>
+        <view class="wenzi">{{queka}}次</view>
+
+      </view>
+    </view>
+  </view>
+
+  <view style="width:100%;height:10px;padding:0px;background-color:rgb(239,239,239);overflow:hidden;"></view>
+  <view class="content">
+    <view class="date">
+      <view class="whichYear" bindtap="lastMonth_Fn">
+        <image src="../../image/left.png" class="date-image"></image>
+      </view>
+      <view class="whichYear">
+        <text>{{toYear}}年{{toMonth}}月</text>
+      </view>
+      <view class="whichYear" bindtap="nextMonth_Fn">
+        <image src="../../image/right.png" class="date-image"></image>
+      </view>
+
+
+    </view>
+
+
+
+    <view class="monthBox" catchtouchend="monthTouch">
+      <view class="weekDay">
+        <view class="week">日</view>
+        <view class="week">一</view>
+        <view class="week">二</view>
+        <view class="week">三</view>
+        <view class="week">四</view>
+        <view class="week">五</view>
+        <view class="week">六</view>
+      </view>
+      <view class="monthDay">
+        <view class="tr" wx:for="{{MonthDayArray}}" wx:key="month">
+          <view id="{{item.num}}" class="day {{item.isShowDayInfo ? 'showDayInfo':'hideDayInfo'}} {{item.isToday ? 'today' : ''}}" wx:for="{{item}}" bindtap="dateClick" wx:key="day">
+            <text class="gongli">{{item.num}}</text>
+            <text class="nongli">{{item.nongli}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style="width:345px;height:1px;margin-left:15px;margin-top:20px;padding:0px;background-color:rgb(239,239,239);overflow:hidden;"></view>
+
+    <view class="bottom">
+      <view class="left_bottom">
+        <image src="../../image/top.png" class="circle-image"></image>
+        <image src="../../image/line.png" class="line"></image>
+        <image src="../../image/bottom.png" class="circle-image"></image>
+
+      </view>
+
+      <view class="right_bottom">
+        <view class="time1">
+          <image src="../../image/clock.png" class="time-image"></image>{{startWorkTime}} {{signStateM}}</view>
+        <view class="adress">
+          <image src="../../image/ellipse.png" class="address-image"></image>{{signAddr}}</view>
+
+        <view class="time2">
+          <image src="../../image/clock.png" class="time-image"></image>{{endWorkTime}} {{signStateA}}</view>
+        <view class="adress">
+          <image src="../../image/ellipse.png" class="address-image"></image>{{xbSignAddr}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>

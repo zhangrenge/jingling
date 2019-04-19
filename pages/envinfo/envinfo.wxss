@@ -1,0 +1,5 @@
+.envinfo{
+  width:100%;
+  height:100%;
+  background: #9BCD9B;
+}

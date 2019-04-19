@@ -1,0 +1,106 @@
+<!-- holiday.wxml -->
+<import src="../../../component/wetoast/wetoast.wxml" />
+<view class='container-mine'>
+  <view class='column margin-t-twenty'>
+    <!-- 会议主题-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>会议主题</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>            
+      <input name="meetingName" value='{{meetingName}}' style='width:400rpx' class="inputClass" bindinput="meetingNameInput"/>
+    </view>
+    <!-- 电话-->
+    <view class='youxiang'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>电话</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>
+      <input style='width:300rpx' name="applyPhone" class="inputClass" bindinput="applyPhoneInput" value="{{applyPhone}}" placeholder='请输入电话'/>
+      <image src='../assets/images/add.png' class='btnAdd' bindtap="addPhoneBtn"></image>
+    </view>
+     <view class='user-list'>
+      <label wx:for="{{choosePhone}}" wx:for-item="ch" wx:key="{{index}}">
+      <view class='item1'>
+        <icon type="clear" size="15" data-remindId="{{index}}"  bindtap="deletePhone"/> 
+      <text class="inputClass"  data-remindId="{{index}}">{{ch.applyPhone}}</text>  
+      </view> 
+      </label>
+    </view> 
+    <!-- 邮箱-->
+    <view class='youxiang'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>邮箱</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>
+      <input style='width:300rpx' name="applyEmail" class="inputClass" bindinput="applyEmailInput" value="{{applyEmail}}" placeholder='请输入邮箱'/>
+      <image src='../assets/images/add.png' class='btnAdd' bindtap="addBtn"></image>
+    </view>
+     <view class='user-list'>
+      <label wx:for="{{chooseParticipant}}" wx:for-item="ch" wx:key="{{index}}">
+      <view class='item1'>
+        <icon type="clear" size="15" data-remindId="{{index}}"  bindtap="deleteUser"/> 
+      <text class="inputClass"  data-remindId="{{index}}">{{ch.applyEmail}}</text>  
+      </view> 
+      </label>
+    </view> 
+    <!-- 开始时间-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>开始时间</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+      <view class='row'>
+        <picker mode="date" value="{{dateStart}}" start="{{pickerStart}}" end="2099-12-31" fields="day" bindchange="bindDateChangeStart">
+          <view class="text-s-big text-c-blue">
+            {{dateStart}}
+          </view>
+        </picker>
+        <picker mode="time" value="{{timeStart}}" start="{{pickerTimeStart}}" end="24:00" bindchange="bindTimeChangeStart">
+          <view class="text-s-big text-c-blue" style='margin-left:20rpx;'>
+            {{timeStart}}
+          </view>
+        </picker>
+      </view>
+    </view>
+     <!-- 结束时间-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>结束时间</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+      <view class='row'>
+        <picker mode="date" value="{{dateEnd}}" start="{{pickerEnd}}" end="2099-12-31" bindchange="bindDateChangeEnd">
+          <view class="text-s-big text-c-blue">
+            {{dateEnd}}
+          </view>
+        </picker>
+        <picker mode="time" value="{{timeEnd}}" start="{{pickerTimeEnd}}" end="24:00" bindchange="bindTimeChangeEnd">
+          <view class="text-s-big text-c-blue" style='margin-left:20rpx;'>
+            {{timeEnd}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  
+
+    <!-- 会议地点-->
+   <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>地点</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>            
+      <input name="timezone" value='{{timezone}}' style='width:400rpx' class="inputClass" bindinput="timezoneInput" placeholder='请输入会议地点'/>
+    </view>
+
+    <view class='text-area margin-t-twenty' style='height:100rpx'>
+    <view class='row'>
+    
+      <button class='btn-apply-selected' bindtap="arrange" data-flag='false' disabled='{{submitDisabled}}'>立即修改</button>
+    </view>
+  </view>
+ 
+</view> 
+ <input value="{{id}}" style='opacity: 0'/>
+</view>
+<template is="wetoast" data="{{...__wetoast__}}" />

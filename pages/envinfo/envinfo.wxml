@@ -1,0 +1,5 @@
+<view class="envinfo">
+<web-view src="{{envUrl}}">
+
+</web-view>
+</view>

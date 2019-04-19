@@ -1,0 +1,142 @@
+.page{
+	padding: 0rpx;
+    margin: 0rpx;
+    height: 100%;
+}
+.con{
+ 	display: flex;
+ 	flex-direction: column;
+}
+.date{ 
+	text-align: center;
+	font-size: 30rpx;
+	color: #333333;
+	height: 50rpx;
+}
+.title{ 
+	text-align: center; 
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border-color: #efefef;
+	border-bottom-style:solid; 
+	font-size: 30rpx; 
+	color: #333333;
+	font-weight: bold;
+}
+.picker-date{ 
+	justify-content:space-around;
+}
+.picker-date-format{
+	padding: 22rpx;
+	line-height: 50rpx; 
+	text-align: center; 
+	display: inline-block;
+	border: 1rpx solid #ccc;
+	font-size:30rpx; 
+}
+.picker-date-bg{
+ 	background-color: #00C5B6;
+}
+.scroll-view{
+	/*position: fixed;*/
+	top: 0;
+	left: 0;
+	/*width: 100%;*/
+	background: #fff;
+	border-bottom: 1rpx solid #e5e5e5;
+	white-space: nowrap;
+	overflow: auto;
+	text-overflow: ellipsis;
+	/*margin-top: 140rpx;*/
+	white-space: nowrap; 
+	display: flex;
+	height: 140rpx;
+}
+.centre{
+    width: 100%;
+   /* position: absolute;*/
+    background-color: #efefef;
+}
+.row{
+    display: flex;
+    flex-direction:row;
+}
+.row .left{
+	background-color: #efefef;
+    margin: 20rpx 0rpx 20rpx 0rpx; 
+}
+.left{
+    width: 25%;
+}
+.columnLeft{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 10rpx;
+}
+.columnLeft view{
+	font-size: 30rpx;
+	color: #666666;
+}
+.rigth{
+    width: 80%;
+}
+.currentUser-text{
+	color: red;
+}
+.columnRigth{
+	width: 95%;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	border: 2rpx solid #D8D8D8;
+	background-color: white;
+	margin: 10rpx 0rpx 0rpx 0rpx;
+}
+.noData{
+    text-align: center; 
+    color: #999999;
+}
+.border-blue{
+	border: 4rpx solid #5ab9ff; 
+	height: 92%;
+	margin-top: 10rpx;
+}
+.blue{
+	background-color: #cdeaff;
+}
+.border-orange{
+	border: 4rpx solid #fcb221; 
+	height: 92%;
+	margin-top: 10rpx;
+}
+.orange{
+	background-color: #f3ddb1;
+}
+.border-gray{
+	border: 4rpx solid #bbbbbb; 
+	height: 92%; 
+	margin-top: 10rpx;
+}
+.gray{
+	background-color: #dfdfdf;
+}
+.border-green{
+	border: 4rpx solid #65cc00; 
+	height: 92%;
+	margin-top: 10rpx;
+}
+.green{
+	background-color: #d0efb2;
+}
+.columnRigth text{
+	font-size: 30rpx;
+	line-height: 37rpx;
+}
+.foot-img{
+    bottom: 0rpx;
+    position: fixed;
+    left: 620rpx;
+    width: 110rpx;
+    height:110rpx;
+}

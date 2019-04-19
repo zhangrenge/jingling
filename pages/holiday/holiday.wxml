@@ -1,0 +1,85 @@
+<!-- holiday.wxml -->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<view class='container-mine'>
+  <!-- <view class='tab-row'>
+    <text class='text-s-mid text-c-gray' style='display:none;'>这是您本月第1次请假</text>
+    <text class='text-s-mid text-c-blue'>查看请假记录</text>
+  </view> -->
+  <view class='tab-row margin-t-twenty'>
+    <text class='text-s-big text-c-black'>请假类型</text>
+    <picker bindchange="bindPickerChangeReason" value="{{areaIndex}}" range="{{area}}">
+      <view class='leave-type text-c-white'>
+        <view class="text-s-mid">
+          当前选择：{{area[areaIndex]}}
+        </view>
+        <image src='../../image/up-and-down.png' class='img-up-down'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='column margin-t-twenty'>
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>开始时间</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+      <view class='row'>
+        <picker mode="date" value="{{dateStart}}" start="{{pickerStart}}" end="2099-12-31" fields="day" bindchange="bindDateChangeStart">
+          <view class="text-s-big text-c-blue">
+            {{dateStart}}
+          </view>
+        </picker>
+        <picker bindchange="bindTimeChangeStart" value="{{timeStartIndex}}" range="{{timeStartArea}}">
+          <view class="text-s-big text-c-blue" style='margin-left:20rpx;'>
+            {{timeStartArea[timeStartIndex]}}
+          </view>
+       </picker>
+      </view>
+    </view>
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>结束时间</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+      <view class='row'>
+        <picker mode="date" value="{{dateEnd}}" start="{{pickerEnd}}" end="2099-12-31" bindchange="bindDateChangeEnd">
+          <view class="text-s-big text-c-blue">
+            {{dateEnd}}
+          </view>
+        </picker>
+        <picker bindchange="bindTimeChangeEnd" value="{{timeEndIndex}}" range="{{timeEndArea}}">
+          <view class="text-s-big text-c-blue" style='margin-left:20rpx;'>
+            {{timeEndArea[timeEndIndex]}}
+          </view>
+       </picker>
+      </view>
+    </view>
+  </view>
+  <view class='tab-row'>
+    <text class='text-s-big text-c-black'>请假天数</text>
+    <text class='text-s-big text-c-gray'>{{leaveDays}}天</text>
+  </view>
+  <view class='tab-row'>
+    <text class='text-s-big text-c-black'>剩余的年假天数</text>
+    <text class='text-s-big text-c-gray'>{{remainLeave}}天</text>
+  </view>
+  <form bindsubmit="evaSubmit" report-submit='true'>
+    <view class='text-area margin-t-twenty' style='padding-top:26rpx;height:240rpx;'>
+      <textarea class='text-s-big text-c-gray' placeholder='请输入请假事由(必填)' placeholder-class='text-s-big text-c-light-gray' bindinput="textAreaBlur"></textarea>
+    </view>
+    <view class='text-area margin-t-twenty' style='height:440rpx'>
+      <text class='text-s-big text-c-black'>上传附件：</text>
+      <view class='attachment-view'>
+        <image src='../../image/add.png' class='img-add' bindtap='uploadAttachment' style='margin-right:15rpx;'></image>
+        <view class='img-add column' wx:for='{{tempFiles}}' style='margin-left:15rpx;'>
+          <image src='{{item.path}}' data-src='{{item.path}}' class='img-attachment' bindtap='previewImg'></image>
+          <image src='../../image/close.png' class='img-close' bindtap='deleteAttachment' data-imgPath='{{item.path}}'></image>
+        </view>
+      </view>
+      <view class='row'>
+        <button class='btn-apply' formType="submit" data-flag='true'>暂存</button>
+        <button class='btn-apply-selected' formType="submit" data-flag='false'>提交</button>
+      </view>
+    </view>
+  </form>
+</view>
+<template is="wetoast" data="{{...__wetoast__}}"/>

@@ -1,0 +1,134 @@
+<!--page/one/index.wxml-->
+<view class="whole">
+<view class="page">
+    <view class="nav" bindscrolltoupper="topLoad">
+        <view class="nav-son borders {{shownavindex == 1? 'active' : ''}}" bindtap="placeList" data-nav="1">
+            <view class="content">会议地点</view>
+            <view class="icon" wx:if="{{shownavindex == ''}}">
+                <image src="../../../image/icon_drop-down_nor@2x.png"></image>
+            </view>
+            <view class="icon" wx:elif="{{shownavindex == 1}}">
+                <image src="../../../image/icon_top_sc@2x.png"></image>
+            </view>
+            <view class="icon" wx:elif="{{shownavindex == 2}}">
+                <image src="../../../image/icon_drop-down_nor@2x.png"></image>
+            </view>
+        </view>
+        <view class="nav-son {{shownavindex == 2? 'active' : ''}}" bindtap="filterClick" data-nav="2">
+            <view class="content">筛选条件</view>
+            <view class="icon" wx:if="{{shownavindex == ''}}">
+                <image src="../../../image/icon_filter_nor@2x.png"></image>
+            </view>
+            <view class="icon" wx:elif="{{shownavindex == 1}}">
+                <image src="../../../image/icon_filter_nor@2x.png"></image>
+            </view>
+            <view class="icon" wx:elif="{{shownavindex == 2}}">
+                <image src="../../../image/icon_filter_sc@2x.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="temp temp1 {{placeOpen ? 'slidown' : 'slidup centre'}} {{placeShow ? 'disappear':''}}">
+        <view wx:if="{{placeData == true}}">
+            <view wx:for="{{content}}" wx:key=""    >
+                <view class="open" bindtap='placeClick' data-id="{{item.id}}">
+                    <view style="width: 85%;">
+                        <text class="{{placeColor == item.id ? 'activeColor' : ''}}">{{item.name}}</text>
+                    </view>
+                    <view style="width: 15%;">
+                        <image class="{{placeColor == item.id ? 'activeShow' : 'activeHiden'}}" src="../../../image/元素单选@2x.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:else class="noData">
+            <text>暂无数据</text>
+        </view>
+    </view>
+    <view class="temp temp2 {{filterOpen ? 'slidown' : 'slidup centre'}} {{filterShow ? 'disappear':''}}">
+        <view>
+            <text class="filterText">关键词搜索：</text>
+            <input class="input" placeholder="请输入关键词方便查询" 
+    bindblur="bindMeetingNameChange" value="{{meetingName}}" />
+        </view>
+        <view>
+            <text class="filterText">日期区间：</text>
+            <view class="open">
+                <view class="dataClass">
+                    <picker mode="date" value="{{dateStart}}" start="1970-01-01" end="{{pickerEnd}}" fields="day" bindchange="bindDateChangeStart">
+                        <view style="color: #3192f0;">
+                        {{dateStart}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="dataClass">
+                    <picker mode="date" value="{{dateEnd}}" start="{{pickerDateStart}}" end="2099-12-31" bindchange="bindDateChangeEnd">
+                        <view style="color: #3192f0;">
+                          {{dateEnd}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <view>
+            <text class="filterText">会议天数：</text>
+            <input class="input" type="number" placeholder="请输入要查询的会议天数" 
+    bindchange="bindMeetingDaysChange" value="{{meetingDays}}" />
+        </view>
+        <view>
+            <view class="open">
+                <view class="button_view" bindtap="resetBtnClick">
+                    <text style="color: #3192f0;">重置</text>
+                </view>
+                <view style="border: 1rpx solid #D8D8D8; margin: 20rpx 0rpx 20rpx 0rpx;"></view>
+                <view class="button_view" bindtap="filterBtnClick">
+                    <text style="color: #3192f0;">确定</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="fullbg {{isfull ?'fullopacity bfullbgHeight':''}}" bindtap="hidebg"></view>
+    <view class="centre">
+        <view wx:if="{{meetingData == true}}">
+         <scroll-view style="height:{{scrollHeight}}px;" scroll-y="true" upper-threshold="-50" bindscrolltoupper="bindUpLoad" lower-threshold="0" bindscrolltolower="bindDownLoad"> 
+            <view class="meetingDiv" wx:for="{{myBaspeakList}}" wx:key="" bindtap="meetingReserveClick" data-id="{{item.reserveId}}">
+                <view class="left">
+                    <view class="meetingInfo">
+                        <view class="meetingInfo-gray">
+                            <view>
+                                <image class="meetingInfo-img" src="../../../image/icon_theme@2x.png" mode="aspectFill"></image>
+                            </view>
+                            <text class="meetingInfo-text">会议主题：</text>
+                            <text>{{item.meetingName}}</text>
+                        </view>
+                        <view class="meetingInfo-gray">
+                            <view>
+                                <image class="meetingInfo-img" src="../../../image/icon_place@2x.png" mode="aspectFill"></image>
+                            </view>
+                            <text class="meetingInfo-text">会议地点：</text>
+                            <text>{{item.meetingRoomName}}</text>
+                        </view>
+                        <view class="meetingInfo-gray">
+                            <view>
+                                <image class="meetingInfo-img" src="../../../image/icon_time@2x.png" mode="aspectFill"></image>
+                            </view>
+                            <text class="meetingInfo-text">开始时间：</text>
+                            <text>{{item.startTime}}</text>
+                        </view>
+                        <view class="meetingInfo-gray">
+                            <view>
+                                <image class="meetingInfo-img" src="../../../image/icon_time@2x.png" mode="aspectFill"></image>
+                            </view>
+                            <text class="meetingInfo-text">结束时间：</text>
+                            <text>{{item.endTime}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        </view>
+        <view wx:else class="noData">
+            <text>暂无数据</text>
+        </view>
+    </view>
+</view>
+</view>

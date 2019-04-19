@@ -1,0 +1,6 @@
+{
+  "navigationBarBackgroundColor": "#5ab9ff",
+  "navigationBarTitleText": "日程安排",
+  "enablePullDownRefresh": false,
+  "navigationBarTextStyle": "white"
+}

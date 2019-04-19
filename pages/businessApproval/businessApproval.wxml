@@ -1,0 +1,9 @@
+<!-- approvalReason.wxml -->
+<import src="../../component/wetoast/wetoast.wxml" />
+<form bindsubmit="evaSubmit">
+  <view class='text-area'>
+    <textarea class='text-s-big text-c-gray' placeholder='请输入审批理由(必填)' placeholder-class='text-s-big text-c-light-gray' bindinput="textAreaBlur"></textarea>
+  </view>
+  <button class='btn-apply' formType="submit">提交</button>
+</form>
+<template is="wetoast" data="{{...__wetoast__}}" />

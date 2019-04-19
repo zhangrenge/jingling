@@ -1,0 +1,40 @@
+ <!-- <web-view src="https://ai.dgtis.com/ensmart"></web-view>  -->
+ <view style='width:100%;'>
+    <scroll-view scroll-x="true" style='width:100%;'>
+      <text style='margin-left:20rpx;'>6</text>
+      <text style='margin-left:20rpx;'>2</text>
+      <text style='margin-left:20rpx;'>8</text>
+      <text style='margin-left:20rpx;'>1</text>
+      <text style='margin-left:20rpx;'>3</text>
+      <text style='margin-left:20rpx;'>2</text>
+      <text style='margin-left:20rpx;'>4</text>
+      <text style='margin-left:20rpx;'>6</text>
+      <text style='margin-left:20rpx;'>0</text>
+      <text style='margin-left:20rpx;'>9</text>
+      <text style='margin-left:20rpx;'>6</text>
+      <text style='margin-left:20rpx;'>7</text>
+      <text style='margin-left:20rpx;'>1</text>
+      <text style='margin-left:20rpx;'>2</text>
+      <text style='margin-left:20rpx;'>7</text>
+      <text style='margin-left:20rpx;'>3</text>
+      <text style='margin-left:20rpx;'>5</text>
+      <text style='margin-left:20rpx;'>6</text>
+      <text style='margin-left:20rpx;'>2</text>
+      <text style='margin-left:20rpx;'>8</text>
+      <text style='margin-left:20rpx;'>1</text>
+      <text style='margin-left:20rpx;'>3</text>
+      <text style='margin-left:20rpx;'>2</text>
+      <text style='margin-left:20rpx;'>4</text>
+      <text style='margin-left:20rpx;'>6</text>
+      <text style='margin-left:20rpx;'>0</text>
+      <text style='margin-left:20rpx;'>9</text>
+      <text style='margin-left:20rpx;'>6</text>
+      <text style='margin-left:20rpx;'>7</text>
+      <text style='margin-left:20rpx;'>1</text>
+      <text style='margin-left:20rpx;'>2</text>
+      <text style='margin-left:20rpx;'>7</text>
+      <text style='margin-left:20rpx;'>3</text>
+      <text style='margin-left:20rpx;'>5</text>
+      
+    </scroll-view>
+ </view>

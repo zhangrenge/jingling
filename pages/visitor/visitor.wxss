@@ -1,0 +1,49 @@
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-tab__content{
+  text-align: left;
+}
+.weui-navbar__slider{
+  width: 50%;
+}
+.weui-desc{
+  padding: 20px 15px 10px;
+}
+
+.weui-img{
+  text-align: center;
+}
+.weui-img>image{
+  width: 100px;
+  height: 100px;
+}
+
+  .loginview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 330px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .loginview input{
+     background: 0 0 #eeecec no-repeat;
+     color: #000;
+     padding: 0px 16px;
+     height: 46px;
+  }
+  .loginview button{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    border-radius: 0;
+    font-size: 18px;
+    height: 46px;
+    line-height: 46px;
+  }

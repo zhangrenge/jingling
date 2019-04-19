@@ -1,0 +1,262 @@
+.whole{
+    padding: 0rpx;
+    margin: 0rpx;
+    height: 100%;
+}
+.page{
+    font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Droid Sans Fallback', 'Microsoft Yahei', sans-serif;
+    background-color: #efefef;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    /*position: fixed; */
+}
+text{
+    font-family: "PingFang"
+}
+.nav{
+    position: relative;
+    z-index: 99;
+    display: flex;
+    border-top: 2rpx solid #d1d3d4;
+    border-bottom: 2rpx solid #d1d3d4;
+    background: #fff;
+}
+.nav-son{
+    display: flex;
+    flex: 1;
+    text-align: center;
+    height: 80rpx;
+    align-items:center;
+    justify-content:center;
+    font-size: 28rpx;
+}
+.borders{
+    border-left: 2rpx solid #e6e6e6;
+    border-right: 2rpx solid #e6e6e6;
+}
+.content{
+    display: inline-block;
+    font-size: 30rpx;
+}
+.icon image{
+    /*display: inline-block; 
+    border: 8rpx solid transparent;
+    border-top: 8rpx solid #9b9b9b;
+    margin-left: 10rpx; */
+    width: 40rpx;
+    height: 40rpx;
+    margin: 20rpx 20rpx 0rpx 0rpx; 
+}
+.temp{
+    position: relative;
+    z-index: 4;
+}
+.temp1{
+    display: none;
+    width: 100%;
+    max-height: 550rpx;
+    overflow-y: scroll;
+    padding: 0 0 0 20rpx;
+    line-height:100rpx;
+    background: #fff;
+}
+.temp2{
+    display: none;
+    width: 100%;
+    max-height: 750rpx;
+    overflow-y: scroll;
+    padding: 0 0 0 20rpx;
+    line-height:100rpx;
+    background: #fff;
+}
+.slidedown{
+    transform:  translateY(0%);
+}
+.temp view{
+    border-bottom: 2rpx solid #d1d3d4;
+    font-size: 28rpx;
+    color: #666;
+}
+.current{
+    background: #e0e0e0;
+}
+.current2{
+    background: #fff;
+}
+.fullbg{
+    position: fixed;
+    top:0;
+    z-index: 1;
+    width: 100%;
+    height: 0%;
+    background: rgb(1, 1, 1);
+    transition: all 0s;
+    opacity: 0;
+}
+.bfullbgHeight{
+    height: 100%;
+}
+.fullopacity{
+    opacity: .5;
+}
+.nav-son.active .content{
+    color: #61beff;
+}
+.nav-son.active .icon{
+   /* border-bottom: 8rpx solid #61beff;
+    border-top:0rpx;*/
+}
+@keyframes slidown{
+    from{
+        transform:  translateY(-100%);
+    }
+    to{
+        transform:  translateY(0%);
+    }
+}
+.slidown{
+    display: block;
+    animation: slidown 0s ease-in both;
+}
+@keyframes slidup{
+    from{
+        transform:  translateY(0%);
+    }
+    to{
+        transform:  translateY(-100%);
+    }
+}
+.slidup{
+    display: none;
+    animation: slidup 0s ease-in both;
+}
+.disappear{
+    display: none;
+}
+.open{
+    display: flex;
+    flex-direction:row;
+}
+.filterText{
+    font-size: 30rpx;
+    color: #333333; 
+    font-weight: bold;
+}
+.dataClass{
+    border: 6rpx solid #D8D8D8; 
+    width: 46%; 
+    margin-bottom: 20rpx; 
+    text-align: center;
+}
+.button_view{
+    text-align: center;
+    width: 48%; 
+    /*border-bottom: 1rpx;*/
+}
+.activeColor{
+    color: #61beff;
+}
+.activeShow{
+    width: 30rpx;
+    height: 30rpx;
+}
+.activeHiden{
+    display: none;
+}
+.tempDisplay{
+    display: flex;
+    flex-direction:row;
+}
+.input{
+    width: 94%;
+    border: 6rpx solid #D8D8D8;
+    margin-bottom: 20rpx;
+}
+.text-blue {
+    color: #3192f0;
+}
+.centre{
+    width: 100%;
+    position: absolute;
+    background-color: #efefef;
+}
+.meetingDiv{
+    height: 250rpx;
+    background-color: white;
+    margin: 15rpx 0rpx 20rpx 0rpx; 
+    display: flex;
+    flex-direction:row;
+}
+.noData{
+    text-align: center; 
+    color: #999999;
+}
+.left{
+    width: 100%;
+    margin: 20rpx 0rpx 0rpx 20rpx; 
+}
+.rigth{
+    width: 55%;
+    line-height:52rpx;
+    margin: 20rpx 0rpx 20rpx 0rpx;
+}
+.img{
+    border-radius: 20rpx 20rpx;
+    text-align: right;
+    width: 95%;
+    height: 230rpx;
+}
+.meetingInfo{
+    display: flex;
+    flex-direction:column;
+}
+.meetingInfo-room{
+    margin-top: 10rpx;
+    font-size: 40rpx;
+}
+.meetingInfo-black{
+    font-size: 30rpx;
+    color: #333333;
+}
+.meetingInfo-orange{
+    font-size: 30rpx;
+    color: orange;
+}
+.meetingInfo-gray{
+    display: flex;
+    font-size: 30rpx;
+    flex-direction: row;
+    color: #999999;
+    /*margin-top: 15rpx;  */
+}
+.meetingInfo-gray view{
+    font-style: 30rpx;
+    margin-right: 20rpx;
+}
+.meetingInfo-text{
+    font-size: 30rpx;
+    color: #333333; 
+}
+.meetingInfo-blue{
+    font-size: 30rpx;
+    color: #5ad9ff;
+    margin-right: 30rpx;
+}
+.meetingInfo-green{
+    font-size: 30rpx;
+    color: #65ca00;
+}
+.meetingInfo-img{
+    width: 50rpx;
+    height: 50rpx;
+}
+.meetingInfo-text{
+    display: block;
+ }
+.centre scroll-view{
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  top: 0;  
+}

@@ -1,0 +1,26 @@
+<!-- approvalReason.wxml -->
+<import src="../../component/wetoast/wetoast.wxml" />
+
+  <form bindsubmit="evaSubmit" report-submit='true'>
+    <view class='text-area'>
+    <textarea class='text-s-big text-c-gray' placeholder='请输入工作完成情况' placeholder-class='text-s-big text-c-light-gray' bindinput="progressBlur"></textarea>
+    </view>
+    <view class='text-area'>
+      <textarea class='text-s-big text-c-gray' placeholder='请输入工作完成进度' placeholder-class='text-s-big text-c-light-gray' bindinput="completionBlur"></textarea>
+    </view>
+    <view class='text-area margin-t-twenty' style='height:360rpx'>
+      <text class='text-s-big text-c-black'>上传附件：</text>
+      <view class='attachment-view'>
+        <image src='../../image/add.png' class='img-add' bindtap='uploadAttachment' style='margin-right:15rpx;'></image>
+        <view class='img-add column' wx:for='{{tempFiles}}' style='margin-left:15rpx;'>
+          <image src='{{item.path}}' data-src='{{item.path}}' class='img-attachment' bindtap='previewImg'></image>
+          <image src='../../image/close.png' class='img-close' bindtap='deleteAttachment' data-imgPath='{{item.path}}'></image>
+        </view>
+      </view>
+      <view class='row'>
+        <button class='btn-apply' formType="submit" data-flag='true'>提交</button>
+      </view>
+    </view>
+  </form>
+
+<template is="wetoast" data="{{...__wetoast__}}" />

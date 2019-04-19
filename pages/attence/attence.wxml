@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<import src="../../component/wetoast/wetoast.wxml" />
+<!-- 重新定义打卡概念，1.本地打卡为GPS指定范围内打卡2.WIFI打卡为连接路由打卡3.远程打卡为GPS任意位置打卡无需连接路由 -->
+<view style="position:fixed;width:100%;height:100rpx;"> 
+<view bindtap='dakatap' data-text="1" class="{{showModalStatus==1?'dkxz':'dkxzs'}}">本地打卡</view>
+<view bindtap='dakatap' data-text="2"  class="{{showModalStatus==2?'dkxz':'dkxzs'}}">WIFI打卡</view>
+<view bindtap='dakatap' data-text="3"  class="{{showModalStatus==3?'dkxz':'dkxzs'}}">远程打卡</view>
+</view>
+
+<view class="homepage">
+  <!-- <view class="topBar">    
+   <view class="topBar">    
+      <view class="whichYear">
+          <text>{{nowDate}}</text> 
+          <text style="margin-left:10px">{{nowTime}}</text>  
+          <text style="margin-left:10px">{{week}}</text>
+      </view>    
+  </view>  
+ </view> -->
+
+  <map id="myMap" circles="{{circles}}" longitude="{{point.longitude}}" latitude="{{point.latitude}}" markers="{{markers}}" scale="{{mapScale}}" show-location bindregionchange="regionchange" bindmarkertap="markertap" controls="{{controls}}" bindcontroltap="controltap"
+    style="width: {{mapWidth}}; height: {{mapHeight}};top: {{mapTop}}">
+      <cover-view class="toast-child {{selected?'show':'hidden'}}">{{toastMsg}}</cover-view>
+  </map>
+
+</view>
+<template is="wetoast" data="{{...__wetoast__}}" />
+
+<!--mask-->
+<!-- <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>  -->
+
+<!--content--><!--使用animation属性指定需要执行的动画 animation="{{animationData}}"-->
+<!-- <view  class="drawer_box" wx:if="{{showModalStatus==2}}"> 
+
+     <image style="width:100%; height:100%;" src="/image/daka_bk.jpg" />
+     
+</view> -->

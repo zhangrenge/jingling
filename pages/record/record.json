@@ -1,0 +1,6 @@
+{
+  "navigationBarBackgroundColor": "#5ab9ff",
+  "navigationBarTitleText": "员工记录",
+  "enablePullDownRefresh": false,
+  "navigationBarTextStyle": "white"
+}

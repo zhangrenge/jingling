@@ -1,0 +1,40 @@
+
+<view class='homepage'>
+
+  <view class="content">
+    <view class="title_one">  
+       出勤天数:      
+    </view>
+    <view class="text">   
+       当天有过打卡的天数，包括正常打卡、迟到打卡、早退打卡、包括未排班但有打卡记录，不包括请假但打卡的情况            
+    </view>
+    <view class="title">  
+       正常打卡:           
+    </view>
+    <view class="text">   
+       按照管理员规定的考勤时间打卡、未排班打卡，不包括休息但打卡、不包括请假但打卡。    
+    </view>
+    <view class="title">
+       旷工:           
+    </view>
+    <view class="text">   
+      当天为工作日没有请假没有打卡记录则视为旷工
+           
+    </view>
+    <view class="title">  
+       缺卡:           
+    </view>
+    <view class="text">   
+       上班或下班未打卡，请假状态除外。
+           
+    </view>
+    <view class="title">  
+      请假:
+    </view>
+    <view class="text">   
+       提交了请假申请且最终审批人通过           
+    </view>    
+   
+  </view>
+
+</view>

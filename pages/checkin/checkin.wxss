@@ -1,0 +1,64 @@
+.table {
+  border: 0px solid darkgray;
+}
+.redcolor{
+  color: red;
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+}
+
+.td {
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+}
+
+.bg-w {
+  background: snow;
+}
+
+.bg-g {
+  background: #e6f3f9;
+}
+
+.th {
+  width: 40%;
+  justify-content: center;
+  background: rgb(172, 192, 252);
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+
+.weui-form-preview__value {
+  text-align: left;
+}
+
+.weui-search-bar__form {
+  display: flex;
+  text-align: center;
+}
+
+.weui-search-bar__cancel-btn, .weui-cell_ {
+  display: flex;
+  align-items: center;
+}
+
+.weui-form-preview__label {
+  text-justify: distribute-all-lines;
+}
+
+.scroll-list {
+  overflow: auto;
+}
+
+.weui-form-preview:after {
+  bottom: 0;
+  border-bottom: none;
+}

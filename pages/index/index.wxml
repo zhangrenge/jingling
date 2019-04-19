@@ -1,0 +1,50 @@
+<!--index.wxml  -->
+<view class='container-mine'>
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" indicator-active-color="#ffffff" style='height:374rpx;'>
+    <block wx:for="{{headImgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class='slide-image' bindtap='bomb' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='tab mar-t-twenty'>
+    <view class='tab-item' bindtap='test1'>
+      <view class='test-circle'>
+        <view class='tab-badge' wx:if='{{taskNum > 0}}'>{{taskNum < 100 ? taskNum : '99+'}}</view>
+        <image src='../../image/taskNum.png' class='tab-img'></image>
+      </view>
+      <view class='text-s-big text-c-black'>待处理</view>
+    </view>
+    <view class='tab-item' bindtap='test2'>
+      <view class='test-circle'>
+        <view class='tab-badge' wx:if='{{runningNum > 0}}'>{{runningNum < 100 ? runningNum : '99+'}}</view>
+        <image src='../../image/runningNum.png' class='tab-img'></image>
+      </view>
+      <view class='text-s-big text-c-black'>处理中</view>
+    </view>
+    <view class='tab-item' bindtap='test3'>
+      <view class='test-circle'>
+        <view class='tab-badge' wx:if='{{finishNum > 0}}'>{{finishNum < 100 ? finishNum : '99+'}}</view>
+        <image src='../../image/finishNum.png' class='tab-img'></image>
+      </view>
+      <view class='text-s-big text-c-black'>已完成</view>
+    </view>
+  </view>
+  <view class='parent'>
+    <block wx:for="{{child}}">
+      <view class='child' bindtap='biu' data-name='{{item.appName}}'>
+        <i class='text-pic iconfont {{item.appIcon}}' style='color:{{item.iconColor}};'></i>
+        <text class='text-name text-ellipsis-title'>{{item.appName}}</text>
+      </view>
+    </block>
+    <block wx:for="{{localPage}}" wx:if="{{localShow}}">
+      <navigator class='child' url="{{item.appUrl}}" wx:if="{{!(item.level) || item.level=='19'}}">
+        <i class='text-pic iconfont icon-package' style='color:#005344;'>
+        <image src="{{item.appIcon}}" style="width:52rpx;height:52rpx;margin-top:6rpx" />
+        </i>
+        <text style="margin-top:4rpx;" class='text-name text-ellipsis-title'>{{item.appName}}</text>
+      </navigator>
+      </block>
+
+  </view>
+</view>

@@ -1,0 +1,192 @@
+<view class='homepage'>
+  <view class="content">
+    <view class="date">
+    <view class="addSchedule" bindtap="addSchedule">
+        <image src="../../../image/addSchedule.png" class="date-image"></image>
+      </view>
+      <view class="whichYear" bindtap="lastMonth_Fn">
+        <image src="../../../image/left.png" class="date-image"></image>
+      </view>
+      <view class="whichYear">
+        <text>{{toYear}}年{{toMonth}}月</text>
+      </view>
+      <view class="whichYear" bindtap="nextMonth_Fn">
+        <image src="../../../image/right.png" class="date-image"></image>
+      </view>
+      <view class="lookList" bindtap="lookList">
+        <image src="../../../image/lookList.png" class="date-image"></image>
+      </view>
+    </view>
+    <view class="monthBox" catchtouchend="monthTouch">
+      <view class="weekDay">
+        <view class="week">日</view>
+        <view class="week">一</view>
+        <view class="week">二</view>
+        <view class="week">三</view>
+        <view class="week">四</view>
+        <view class="week">五</view>
+        <view class="week">六</view>
+      </view>
+      <view class="monthDay">
+        <view class="tr" wx:for="{{MonthDayArray}}" wx:key="month">
+          <view id="{{item.num}}" class="day {{item.isShowDayInfo ? 'showDayInfo':'hideDayInfo'}} {{item.isSchedule ? 'schedule' : ''}} {{item.isToday ? 'today' : ''}}" wx:for="{{item}}" bindtap="dateClick" wx:key="day">
+            <text class="gongli">{{item.num}}</text>
+            <text class="nongli">{{item.nongli}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style="width:345px;height:1px;margin-left:15px;margin-top:20px;padding:0px;background-color:rgb(239,239,239);overflow:hidden;"></view>
+
+    <view class="bottom">
+      <view class="page__bd" wx:if="{{currentArr.length>0}}">
+        <view class="weui-form-preview" wx:for="{{currentArr}}">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">开始时间</view>
+              <view>{{item.startTime}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">结束时间</view>
+              <view>{{item.endTime}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">主题</view>
+              <view class="weui-form-preview__value">{{item.title}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">房间号</view>
+              <view class="weui-form-preview__value">{{item.room_id}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">地点</view>
+              <view class="weui-form-preview__value">{{item.timezone}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">邮箱</view>
+              <view class="weui-form-preview__value"> {{item.invitee_email}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">电话</view>
+              <view class="weui-form-preview__value"> {{item.invitee_mobile}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">状态</view>
+              <view class="weui-form-preview__value"> {{item.meetingState}}</view>
+            </view>
+
+          </view>
+           <view class="weui-form-preview__ft" wx:if="{{item.inv_mobile==item.mobile}}" data-roomid="{{item.inv_mobile}}">
+            <view bindtap="addBtn" data-roomid="{{item.room_id}}" >开始</view>
+            <navigator url="../editPage/editPage?title={{item.title}}&invitee_email={{item.invitee_email}}&invitee_mobile={{item.invitee_mobile}}&start_time={{item.startTime}}&end_time={{item.endTime}}&id={{item.id}}&timezone={{item.timezone}}" redirect bindtap="">编辑</navigator>
+            <view bindtap="delSchedule" id='{{item.id}}'>删除</view>
+          </view>
+
+           <view class="weui-form-preview__ft" wx:if="{{item.inv_mobile!=item.mobile}}" data-roomid="{{item.inv_mobile!=item.mobile}}">
+            <view bindtap="addBtn" data-roomid="{{item.room_id}}" >开始</view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>暂无会议安排</view>
+    </view>
+  </view>
+   <modal hidden="{{myChatshow}}" title="列表查询" confirm-text="关闭" bindcancel="addCancel" bindconfirm="lookConfirm" no-cancel="{{nocancel}}" catchtouchmove="ture">
+    <scroll-view class="list" style="max-height: {{clientHeight?clientHeight+'px':'auto'}};" scroll-y="true">
+      <view class="bottom">
+      <view class="page__bd" wx:if="{{scheduleList.length>0}}">
+        <view class="weui-form-preview" wx:for="{{scheduleList}}">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">开始时间</view>
+              <view>{{item.startTime}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">结束时间</view>
+              <view>{{item.endTime}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">主题</view>
+              <view class="weui-form-preview__value">{{item.title}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">房间号</view>
+              <view class="weui-form-preview__value">{{item.room_id}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">地点</view>
+              <view class="weui-form-preview__value">{{item.timezone}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">邮箱</view>
+              <view class="weui-form-preview__value"> {{item.invitee_email}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">电话</view>
+              <view class="weui-form-preview__value"> {{item.invitee_mobile}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">状态</view>
+              <view class="weui-form-preview__value"> {{item.meetingState}}</view>
+            </view>
+
+          </view>
+          <view class="weui-form-preview__ft" wx:if="{{item.inv_mobile==item.mobile}}" data-roomid="{{item.inv_mobile}}">
+            <view bindtap="closeBtn" data-roomid="{{item.room_id}}" >开始</view>
+            <navigator url="../editPage/editPage?title={{item.title}}&invitee_email={{item.invitee_email}}&invitee_mobile={{item.invitee_mobile}}&start_time={{item.startTime}}&end_time={{item.endTime}}&id={{item.id}}&timezone={{item.timezone}}" redirect bindtap="">编辑</navigator>
+            <view bindtap="delSchedule" id='{{item.id}}'>删除</view>
+          </view>
+
+           <view class="weui-form-preview__ft" wx:if="{{item.inv_mobile!=item.mobile}}" data-roomid="{{item.inv_mobile!=item.mobile}}">
+            <view bindtap="closeBtn" data-roomid="{{item.room_id}}" >开始</view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>暂无会议安排</view>
+    </view>
+
+    </scroll-view >
+   </modal>
+
+   <!-- 请选择模式 -->
+  <modal hidden="{{scheduleListshow}}" title="请选择模式" confirm-text="关闭" bindcancel="addCancel" bindconfirm="lookConfirm" no-cancel="{{nocancel}}" catchtouchmove="ture">
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio">
+      <radio color='#006eff' value="bigsmall" checked='true' id="bigsmall" />
+      大小画面
+    </label>
+    <label class="radio">
+      <radio color='#006eff' value="float" id="float" />
+      嵌套布局
+    </label>
+    <label class="radio">
+      <radio color='#006eff' value="grid" id="grid" />
+      网格布局
+    </label>
+  </radio-group>
+  <view class="PrevImgBox">
+    <view class="PrevCell">
+      <label for="bigsmall">
+        <image src="../assets/images/bigsmall.png" class="{{template==='bigsmall'?'selected':''}}" />
+      </label>
+    </view>
+    <view class="PrevCell">
+      <label for="float">
+        <image src="../assets/images/float.png" class="{{template==='float'?'selected':''}}" />
+      </label>
+    </view>
+    <view class="PrevCell">
+      <label for="grid">
+        <image src="../assets/images/grid.png" class="{{template==='grid'?'selected':''}}" />
+      </label>
+    </view>
+  </view>
+  <view class='bottom-btn'>
+    <button type="primary" bindtap="joinRoom" hover-class="none">进入房间</button>
+  </view>
+  </modal>
+</view>

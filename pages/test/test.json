@@ -1,0 +1,6 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "测试页面",
+  "enablePullDownRefresh": false,
+  "navigationBarTextStyle": "black"
+}

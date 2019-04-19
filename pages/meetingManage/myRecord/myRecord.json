@@ -1,0 +1,6 @@
+{
+    "navigationBarBackgroundColor": "#5ab9ff",
+  	"navigationBarTitleText": "我的预定",
+  	"enablePullDownRefresh": false,
+  	"navigationBarTextStyle": "white"
+}

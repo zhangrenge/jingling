@@ -1,0 +1,16 @@
+<view class='container'>
+  <form>
+  <!-- 文本输入框 -->
+  <view class='rebut_textarea'>
+    <textarea  bindinput='bindTextAreaBlur'  class='textarea' placeholder='请输入驳回理由（非必填)' name='comment' value='{{comment}}'></textarea>
+  </view> 
+  <!--提交按钮  -->
+  <view class='rebut_btn_container'>
+  <view >
+    <!-- <text>提交</text> -->
+       <button bindtap='bindRebutButton' disabled="{{disabled}}" class='btn-apply-selected' >提交</button>
+  </view> 
+  </view>
+</form>
+
+</view>

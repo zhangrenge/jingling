@@ -1,0 +1,203 @@
+<!-- holiday.wxml -->
+<import src="../../../component/wetoast/wetoast.wxml" />
+<view class='container-mine'>
+  <view class='column margin-t-twenty'>
+
+    <!-- 会议主题-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>会议主题</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>            
+      <input name="meetingName" value='{{meetingName}}' style='width:400rpx' class="inputClass" bindinput="meetingNameInput"/>
+    </view>
+    <!-- 开始时间-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>开始时间</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+      <view class='row'>
+        <picker mode="date" value="{{dateStart}}" start="{{pickerStart}}" end="2099-12-31" fields="day" bindchange="bindDateChangeStart">
+          <view class="text-s-big text-c-blue">
+            {{dateStart}}
+          </view>
+        </picker>
+        <picker mode="time" value="{{timeStart}}" start="{{pickerTimeStart}}" end="24:00" bindchange="bindTimeChangeStart">
+          <view class="text-s-big text-c-blue" style='margin-left:20rpx;'>
+            {{timeStart}}
+          </view>
+        </picker>
+      </view>
+    </view>
+     <!-- 结束时间-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>结束时间</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+      <view class='row'>
+        <picker mode="date" value="{{dateEnd}}" start="{{pickerEnd}}" end="2099-12-31" bindchange="bindDateChangeEnd">
+          <view class="text-s-big text-c-blue">
+            {{dateEnd}}
+          </view>
+        </picker>
+        <picker mode="time" value="{{timeEnd}}" start="{{pickerTimeEnd}}" end="24:00" bindchange="bindTimeChangeEnd">
+          <view class="text-s-big text-c-blue" style='margin-left:20rpx;'>
+            {{timeEnd}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  <!-- 平台公司-->
+  <view class='tab-row'>
+    <view class='row'>
+    <text class='text-s-big text-c-black'>平台公司</text>
+    <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+    </view>
+    <picker class='inputClass' bindchange="companyPickerChange" value="{{companyIndex}}" range="{{companyName}}">
+    <view class="picker">
+    {{companyName[companyIndex]}}
+    </view>
+    </picker>
+    
+  </view>
+
+   <!-- 会议地点-->
+  <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>会议地点</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>            
+     <picker class='inputClass' bindchange="roomPickerChange" value="{{roomIndex}}" range="{{roomName}}">
+    <view class="picker">
+    {{roomName[roomIndex]}}
+    </view>
+    </picker>
+    </view>
+     <!-- 申请部门-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>申请部门</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>
+      
+      <input style='width:400rpx' name="applyDept" disabled='true' class="inputClass" bindinput="applyDeptInput" value="{{applyDept}}"/>
+    </view>
+ <!-- 申请人-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>申请人</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>
+      <input name="applyUser"  style='width:200rpx' disabled='true' class="inputClass" bindinput="applyUserInput" value="{{applyUser}}"/>
+    </view>
+ <!-- 申请人电话-->
+    <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>申请人电话</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+      </view>
+      <input style='width:300rpx' name="applyPhone" class="inputClass" bindinput="applyPhoneInput" value="{{applyPhone}}"/>
+    </view>
+   <!-- 参会人员-->
+  <view class='tab-row'>
+    <view class='row'>
+    <text class='text-s-big text-c-black'>参会人员</text>
+    <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(必填)</text>
+   
+     <input name="canhuiUser" style='width:300rpx;margin-left:10rpx;'  class="inputClass"  placeholder-class="psection" bindinput="canhuiUser" placeholder="请在此输入参会人员"/>
+    </view>
+    <picker class="inputClass" bindchange="participantPickerChange" value="{{participantIndex}}" range="{{participantName}}">
+    <view class="picker">
+    {{participantName[participantIndex]}}
+    </view>
+    </picker>
+  </view>
+
+
+ 
+  <view class='user-list'>
+   <label wx:for="{{chooseParticipant}}" wx:for-item="ch">
+   <view class='item1'>
+    <icon type="clear" size="15" data-remindId="{{ch.id}}" data-rId="{{ch.relationId}}" bindtap="deleteUser"/> 
+   <text class="inputClass"  data-remindId="{{ch.id}}">{{ch.name}}</text>  
+   </view> 
+   </label>
+    </view> 
+    <view class='{{showView?"participantShow":"participantHide"}}'>
+  <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>周期性会议</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+         <picker bindchange="bindPickerChangeIsPeriodic" value="{{isPeriodicIndex}}" range="{{isPeriodicArea}}">
+      <view class='leave-type text-c-white'>
+        <view class="text-s-mid">
+          当前选择：{{isPeriodicArea[isPeriodicIndex]}}
+        </view>
+        <image src='../../image/up-and-down.png' class='img-up-down'></image>
+      </view>
+    </picker>
+ </view>
+ </view>
+<view class=' {{showDate?"chooseDateShow":"chooseDateHide"}}'>
+ <view class='tab-row'>
+      <view class='row'>
+        <text class='text-s-big text-c-black'>选择日期</text>
+        <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+      </view>
+      <view class='row'>
+        <picker mode="date" value="{{cycleStart}}" start="{{cycleStart}}" end="2099-12-31" fields="day" bindchange="bindCycleDateChange">
+          <view class="text-s-big text-c-blue">
+            {{cycleStart}}
+          </view>
+        </picker>
+       
+      </view>
+    </view>
+</view>
+  <view class='container1'>
+   <label wx:for="{{chooseDate}}" wx:for-item="da">
+   <view class='item1'>
+    <icon type="clear" size="15" data-remindId="{{da.date}}" bindtap="deleteDate"/> 
+   <text class="inputClass"  data-remindId="{{da.date}}">{{da.date}}</text>  
+   </view> 
+   </label>
+    </view> 
+ <!-- 提箱方式-->
+  <view class='tab-row'>
+     <view class='row'>
+    <text class='text-s-big text-c-black'>提醒方式</text>
+      <text class='text-s-big text-c-light-gray' style='margin-left:10rpx;'>(请选择)</text>
+    </view>
+         <picker bindchange="bindPickerChangeIsRemindings" value="{{isRemindingsIndex}}" range="{{isRemindingsArea}}">
+      <view class='leave-type text-c-white'>
+        <view class="text-s-mid">
+          当前选择：{{isRemindingsArea[isRemindingsIndex]}}
+        </view>
+        <image src='../../image/up-and-down.png' class='img-up-down'></image>
+      </view>
+    </picker>
+     
+  </view>
+
+
+ 
+</view> 
+<form bindsubmit="evaSubmit" report-submit='true'>
+    <view class='text-area margin-t-twenty' style='padding-top:26rpx;height:240rpx;'>
+      <textarea class='text-s-big text-c-gray' placeholder-class="psection" placeholder="会议内容"  value='{{remark}}' bindblur="textAreaBlur"></textarea>
+    </view>
+    <view class='text-area margin-t-twenty' style='height:100rpx'>
+      <view class='row'>
+     
+        <button class='btn-apply-selected' formType="submit" data-flag='false' disabled='{{submitDisabled}}'>立即预定</button>
+      </view>
+    </view>
+  </form>
+
+
+
+</view>
+<template is="wetoast" data="{{...__wetoast__}}" />

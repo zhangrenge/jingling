@@ -1,0 +1,18 @@
+<import src="../../component/wetoast/wetoast.wxml" />
+<view wx:if='{{type == 1}}'>
+  <button type="primary" style="width:90%;margin-top:20px" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+  <image src="../../image/wx.png" style="width:50rpx;height:50rpx;vertical-align:middle;margin-right:5px"></image>微信用户快速登录
+</button>
+</view>
+<view class='view-login' wx:else>
+  <view class="view-search">
+    <text class='login-item-left' decode='true'>姓&nbsp;&nbsp;&nbsp;名：</text>
+    <input class="input" bindinput="name"/>
+  </view>
+  <view class="view-search">
+    <view class='login-item-left'>员工号：</view>
+    <input class="input" bindinput="employNum"/>
+  </view>
+  <view class='btn-login' bindtap='login'>登录</view>
+</view>
+<template is="wetoast" data="{{...__wetoast__}}" />

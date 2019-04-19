@@ -1,0 +1,256 @@
+<!--calendar.wxml-->
+<!-- <view class="topBar">
+    <view class="whichDate">{{toMonth}}月{{toDate}}日</view>
+    <view class="whichYear">
+        <text>{{toYear}}年\n</text>
+    </view>
+    <view class="nongliDetail">
+        {{nongliDetail}}
+    </view>
+</view> -->
+
+<view class='homepage'>
+  <view class="content">
+    <view class="date">
+      <view class="addSchedule" bindtap="addSchedule">
+        <image src="../../image/addSchedule.png" class="date-image"></image>
+      </view>
+
+      <view class="whichYear" bindtap="lastMonth_Fn">
+        <image src="../../image/left.png" class="date-image"></image>
+      </view>
+      <view class="whichYear">
+        <text>{{toYear}}年{{toMonth}}月</text>
+      </view>
+      <view class="whichYear" bindtap="nextMonth_Fn">
+        <image src="../../image/right.png" class="date-image"></image>
+      </view>
+
+      <view class="lookList" bindtap="lookList">
+        <image src="../../image/lookList.png" class="date-image"></image>
+      </view>
+    </view>
+    <!-- 添加/编辑行程 -->
+    <modal hidden="{{hiddenmodalput}}" title="{{addCancelTxt}}" confirm-text="" cancel-text="取消" bindcancel="addCancel" bindconfirm="addConfirm" catchtouchmove="ture" no-cancel="{{nocancel}}">
+      <scroll-view class="list" style="max-height: {{clientHeight?clientHeight+'px':'auto'}};" scroll-y="true">
+        <form bindsubmit="formSubmit" report-submit="true">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">主题</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入事件主题" value='{{title}}' bindinput='inputTitle' />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">地点</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入事件地点" value='{{place}}' bindinput='inputPlace' />
+              </view>
+            </view>
+            <view class="weui-cell"></view>
+            <view class="weui-cells__title">开始时间</view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">日期</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="date" value="{{startDate}}" start="2019-01-01" end="2050-01-01" bindchange="bindStartDateChange">
+                  <view class="weui-input">{{startDate}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">时间</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="time" value="{{startTime}}" start="00:00" end="23:59" bindchange="bindStartTimeChange">
+                  <view class="weui-input">{{startTime}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell"></view>
+            <view class="weui-cells__title">结束时间</view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">日期</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="date" value="{{endDate}}" start="2019-01-01" end="2050-01-01" bindchange="bindEndDateChange">
+                  <view class="weui-input">{{endDate}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">时间</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="time" value="{{endTime}}" start="00:00" end="23:59" bindchange="bindEndTimeChange">
+                  <view class="weui-input">{{endTime}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+              <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">提醒</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker bindchange="bindRemindChange" value="{{remindIndex}}" range="{{remindCountries}}">
+                  <view class="weui-select weui-select_in-select-after">{{remindCountries[remindIndex]}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell"></view>
+            <view class="weui-cells__title">备注</view>
+            <!-- <view class="weui-cell" style='padding:3px 15px'></view> -->
+            
+              <view class="weui-cell weui-cell_input">
+                <input class="weui-input" placeholder="请输入备注" value='{{remarks}}' bindinput='inputRemarks' />
+              </view>
+            <!-- <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell">
+                <view class="weui-cell__bd">
+                  <textarea class="weui-textarea" value='{{remarks}}' placeholder="请输入文本" style="height: 3.3em;overflow:scroll;resize:none;" bindinput='inputRemarks' />
+
+                </view>
+              </view>
+            </view> -->
+            <view class="weui-cell"></view>
+          </view>
+          <view class="btn-area">
+            <view class="weui-form-preview__ft ">
+              <button class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap='addCancel'>取消</button>
+              <button class="weui-form-preview__btn weui-form-preview__btn_primary" form-type="submit" hover-class="weui-form-preview__btn_active" bindtap='addConfirm'>提交</button>
+            </view>
+          </view>
+          
+        </form>
+      </scroll-view>
+    </modal>
+    <!-- 查看行程 -->
+    <modal hidden="{{scheduleListshow}}" title="当前行程" confirm-text="关闭" bindcancel="addCancel" bindconfirm="lookConfirm" no-cancel="{{nocancel}}" catchtouchmove="ture">
+      <scroll-view class="list" style="max-height: {{clientHeight?clientHeight+'px':'auto'}};" scroll-y="true" bindscrolltolower="loadmore">
+        <view class="page__bd">
+          <view class="weui-form-preview" wx:for="{{scheduleList}}">
+            <view class="weui-form-preview__hd">
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">开始时间</view>
+                <view>{{item.startTime}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">结束时间</view>
+                <view>{{item.endTime}}</view>
+              </view>
+            </view>
+            <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">主题</view>
+                <view class="weui-form-preview__value">{{item.title}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">地点</view>
+                <view class="weui-form-preview__value">{{item.place}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">提醒</view>
+                <view class="weui-form-preview__value">{{item.alert}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">备注</view>
+                <view class="weui-form-preview__value"> {{item.remark}}</view>
+              </view>
+            </view>
+            <view class="weui-form-preview__ft">
+              <view bindtap="editSchedule" data-id='{{item.id}}' class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">编辑</view>
+              <view bindtap="delSchedule" data-id='{{item.id}}' class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">删除</view>
+            </view>
+          </view>
+
+        </view>
+        <!--加载更多  -->
+        <view class="hot-box-more">
+          <view wx:if="{{!hideBottom}}">
+            <view class="weui-loadmore">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">{{loadmoretxt}}</view>
+            </view>
+          </view>
+          <view wx:else class='align'>
+            <text style='font-size:14px;' wx:if="{{refresh}}">{{loadmoretxt}}</text>
+            <view wx:else style="font-size:14px;padding-top:5%;height:{{clientHeight?clientHeight+'px':'auto'}};" bindtap="refreshData">
+              {{loadmoretxt}}
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </modal>
+
+    <view class="monthBox" catchtouchend="monthTouch">
+      <view class="weekDay">
+        <view class="week">日</view>
+        <view class="week">一</view>
+        <view class="week">二</view>
+        <view class="week">三</view>
+        <view class="week">四</view>
+        <view class="week">五</view>
+        <view class="week">六</view>
+      </view>
+      <view class="monthDay">
+        <view class="tr" wx:for="{{MonthDayArray}}" wx:key="month">
+          <view id="{{item.num}}" class="day {{item.isShowDayInfo ? 'showDayInfo':'hideDayInfo'}} {{item.isSchedule ? 'schedule' : ''}} {{item.isToday ? 'today' : ''}}" wx:for="{{item}}" bindtap="dateClick" wx:key="day">
+            <text class="gongli">{{item.num}}</text>
+            <text class="nongli">{{item.nongli}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style="width:345px;height:1px;margin-left:15px;margin-top:20px;padding:0px;background-color:rgb(239,239,239);overflow:hidden;"></view>
+
+    <view class="bottom">
+      <view class="page__bd" wx:if="{{currentArr.length>0}}">
+        <view class="weui-form-preview" wx:for="{{currentArr}}">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">开始时间</view>
+              <view>{{item.startTime}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">结束时间</view>
+              <view>{{item.endTime}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">主题</view>
+              <view class="weui-form-preview__value">{{item.title}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">地点</view>
+              <view class="weui-form-preview__value">{{item.place}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">提醒</view>
+              <view class="weui-form-preview__value">{{item.alert}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">备注</view>
+              <view class="weui-form-preview__value"> {{item.remark}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__ft">
+            <view bindtap="editSchedule" data-id='{{item.id}}' class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">编辑</view>
+            <view bindtap="delSchedule" data-id='{{item.id}}' class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">删除</view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>当日无安排</view>
+    </view>
+  </view>
+
+</view>

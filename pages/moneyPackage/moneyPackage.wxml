@@ -1,0 +1,9 @@
+
+ <!-- <view class='homepage'>
+111
+
+</view>  -->
+
+<web-view src="{{urls}}">
+
+</web-view>

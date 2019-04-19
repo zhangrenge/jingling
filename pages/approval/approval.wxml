@@ -1,0 +1,83 @@
+<!-- approval.wxml -->
+<import src="../../component/wetoast/wetoast.wxml" />
+<view class='container-mine'>
+  <view class='tab-top bg-white text-s-big'>
+    <view class="{{selected1?'selected':'unselected'}} tab-item" bindtap='selected1'>待处理</view>
+    <view class='line'></view>
+    <view class="{{selected2?'selected':'unselected'}} tab-item" bindtap='selected2'>处理中</view>
+    <view class='line'></view>
+    <view class="{{selected3?'selected':'unselected'}} tab-item" bindtap='selected3'>已完成</view>
+  </view>
+  <view class='tab-line bg-white'>
+    <view class="{{selected1?'bg-blue':'bg-white'}} tab-line-item"></view>
+    <view class="{{selected2?'bg-blue':'bg-white'}} tab-line-item"></view>
+    <view class="{{selected3?'bg-blue':'bg-white'}} tab-line-item"></view>
+  </view>
+  <view style='width:100%;height:80rpx;'></view>
+  <view class="{{selected1?'show':'hidden'}}">
+    <view class='column' wx:for='{{untreatedList}}' data-id='{{item.id}}' data-type='{{item.taskName}}'  data-processDefName='{{item.processDefName}}' bindtap='untreatedItemClick' data-assignee='{{item.assignee}}'>
+      <view class='column-item bg-white' style='margin-top:10rpx;'>
+        <view class='tip-item'>
+          <view class='row' style='height:100rpx;'>
+            <image src='{{imgBaseUrl + item.userHeadImage}}' class='img-head'></image>
+            <view class='column' style='margin-left:20rpx;'>
+              <text class='text-s-mid text-c-black'>{{item.userId}}</text>
+              <text class='text-s-mid text-c-blue margin-t-twenty'>{{item.processDefName}}</text>
+            </view>
+          </view>
+          <view class='column' style='width:228rpx;height:100rpx;'>
+            <text class='text-s-mid text-c-gray' style='margin-top:9rpx;width:260rpx;'>{{item.applyTime}}</text>
+                         <text wx:if="{{item.processDefName=='用印申请'&&item.assignee==null}}" class='text-s-mid text-c-gray' style='margin-top:9rpx;width:260rpx;'>未签收</text>
+          </view>
+        </view>
+        <!-- <text class='text-s-mid text-c-gray margin-t-twenty' style='margin-left:30rpx;'></text> -->
+      </view>
+    </view>
+    <view class="bottom-loading {{selected5?'flex':'hidden'}}">更多数据加载中...</view>
+    <image src='../../image/sorry.png' class="img-sorry {{selected4?'show':'hidden'}}"></image>
+  </view>
+  <view class="{{selected2?'show':'hidden'}}">
+    <view class='column' wx:for='{{treatingList}}' data-id='{{item.id}}' data-pDefId='{{item.processDefinitionId}}' data-pInstId='{{item.processInstanceId}}' data-processDefName='{{item.processDefName}}' bindtap='treatingItemClick'>
+      <view class='column-item bg-white' style='margin-top:10rpx;'>
+        <view class='tip-item'>
+          <view class='row' style='height:100rpx;'>
+            <image src='{{imgBaseUrl + item.userHeadImage}}' class='img-head'></image>
+            <view class='column' style='margin-left:20rpx;'>
+              <text class='text-s-mid text-c-black'>{{item.userId}}</text>
+              <text class='text-s-mid text-c-blue margin-t-twenty'>{{item.taskUserId}}</text>
+            </view>
+          </view>
+          <view class='column' style='width:228rpx;height:100rpx;'>
+            <text class='text-s-mid text-c-gray' style='margin-top:9rpx;width:260rpx;'>{{item.applyTime}}</text>
+            <text class='text-s-mid text-c-blue margin-t-twenty'>{{item.processDefName}}</text>
+          </view>
+        </view>
+        <!-- <text class='text-s-mid text-c-gray margin-t-twenty' style='margin-left:30rpx;'></text> -->
+      </view>
+    </view>
+    <view class="bottom-loading {{selected5?'flex':'hidden'}}">更多数据加载中...</view>
+    <image src='../../image/sorry.png' class="img-sorry {{selected4?'show':'hidden'}}"></image>
+  </view>
+  <view class="{{selected3?'show':'hidden'}}">
+    <view class='column' wx:for='{{treatedList}}' data-id='{{item.id}}'>
+      <view class='column-item bg-white' style='margin-top:10rpx;'>
+        <view class='tip-item'>
+          <view class='row' style='height:100rpx;'>
+            <image src='{{imgBaseUrl + item.userHeadImage}}' class='img-head'></image>
+            <view class='column' style='margin-left:20rpx;'>
+              <text class='text-s-mid text-c-black'>{{item.userId}}</text>
+              <text class='text-s-mid text-c-blue margin-t-twenty'>{{item.processDefName}}</text>
+            </view>
+          </view>
+          <view class='column' style='width:228rpx;height:100rpx;'>
+            <text class='text-s-mid text-c-gray' style='margin-top:9rpx;width:260rpx;'>{{item.applyTime}}</text>
+          </view>
+        </view>
+        <!-- <text class='text-s-mid text-c-gray margin-t-twenty' style='margin-left:30rpx;'></text> -->
+      </view>
+    </view>
+    <view class="bottom-loading {{selected5?'flex':'hidden'}}">更多数据加载中...</view>
+    <image src='../../image/sorry.png' class="img-sorry {{selected4?'show':'hidden'}}"></image>
+  </view>
+</view>
+<template is="wetoast" data="{{...__wetoast__}}" />

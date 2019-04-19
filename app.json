@@ -1,0 +1,55 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/schedule/schedule",
+    "pages/calendar/calendar",
+    "pages/checkin/checkin",
+    "pages/record/record",
+    "pages/approvalReason/approvalReason",
+    "pages/holiday/holiday",
+    "pages/approval/approval",
+    "pages/detail/detail",
+    "pages/login/login",
+    "pages/attence/attence",
+    "pages/help/help",
+    "pages/businessApply/businessApply",
+    "pages/businessApplyDetail/businessApplyDetail",
+    "pages/businessApproval/businessApproval",
+    "pages/businessReport/businessReport",
+    "pages/businessTicket/businessTicket",
+    "pages/test/test",
+    "pages/drawDetail/drawDetail",
+	  "pages/meetingManage/meetingList/meetingList",
+    "pages/meetingManage/meetingReserveList/meetingReserveList",
+    "pages/meetingManage/myRecord/myRecord",
+    "pages/meetingManage/meetingReserve/meetingReserve",
+	  "pages/meetingManage/meetingDetail/meetingDetail",
+	  "pages/stamp/stampApply/stampApply",
+    "pages/stamp/stampList/stampList",
+    "pages/stamp/stampAudit/stampAudit",
+    "pages/stamp/stampDetail/stampDetail",
+    "pages/stamp/stampRebut/stampRebut",
+    "pages/fileSharing/fileSharing",
+    "pages/moneyPackage/moneyPackage",
+    "pages/envinfo/envinfo",
+    "pages/stayChart/index",
+    "pages/visitor/visitor",
+    "pages/chat/choicePage/choicePage",
+    "pages/chat/arrange/arrange",
+    "pages/chat/editPage/editPage",
+    "pages/chat/myChat/myChat",
+    "pages/chat/videoChat/videoChat",
+    "pages/chat/room/room"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "考勤获取位置"
+    }
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#5ab9ff",
+    "navigationBarTitleText": "办公精灵",
+    "navigationBarTextStyle":"white"
+  }
+}

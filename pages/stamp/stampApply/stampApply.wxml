@@ -1,0 +1,46 @@
+<!-- holiday.wxml -->
+<import src="../../../component/wetoast/wetoast.wxml" />
+<view class='container-mine'>
+
+  <view class='column margin-t-twenty'>
+ <view class='tab-row'>
+      <text class='text-s-big text-c-black'>用印类型</text>
+      <picker name="selector" bindchange="bindPickerChange" value="{{picker_index}}"  range="{{picker_arr}}">
+            <view  class='text-s-big text-c-gray'>{{picker_arr[picker_index] }}></view>  
+          </picker>
+    </view>
+    <view class='tab-row'>
+      <text class='text-s-big text-c-black'>登记日期</text>
+      <text class='text-s-big text-c-gray'>{{applyDate}}</text>
+    </view>
+    <view class='tab-row'>
+      <text class='text-s-big text-c-black'>用印日期</text>
+      <text class='text-s-big text-c-gray'>{{applyDate}}</text>
+    </view>
+    
+  </view>
+ 
+  <form bindsubmit="evaSubmit" report-submit='true'>
+    <view class='text-area margin-t-twenty' style='padding-top:26rpx;height:240rpx;'>
+      <textarea class='text-s-big text-c-gray' placeholder='请输入用印事由（必填）' placeholder-class='text-s-big text-c-light-gray' maxlength='100' bindinput="textAreaBlur"> </textarea>
+    </view>
+    <view class='text-area margin-t-twenty' style='height:622rpx'>
+      <text class='text-s-big text-c-black'>上传附件：</text>
+      <view class='attachment-view'>
+        <image src='../../../image/add.png' class='img-add' bindtap='uploadAttachment' style='margin-right:15rpx;'></image>
+        <view class='img-add column' wx:for='{{tempFiles}}' style='margin-left:15rpx;'>
+          <image src='{{item.path}}' data-src='{{item.path}}' class='img-attachment' bindtap='previewImg'></image>
+          <image src='../../../image/close.png' class='img-close' bindtap='deleteAttachment' data-imgPath='{{item.path}}'></image>
+        </view>
+      </view>
+  
+    </view>
+        <view class='row'  >
+         <button   disabled="{{disabled}}" class='btn-apply-selected' formType="submit" data-flag='false'>提交</button>
+      </view>
+  </form>
+
+
+
+</view>
+<template is="wetoast" data="{{...__wetoast__}}" />

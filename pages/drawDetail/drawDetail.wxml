@@ -1,0 +1,43 @@
+<!-- drawDetail.wxml -->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<view class='view-container'>
+  <view class="view-content {{selected ? 'hidden' : 'show'}}" bindtap='next'>
+    <scroll-view class='scroll-content' scroll-y='true'>
+      <view class='title'>
+        <text class='text-s-big'>DGT年会抽奖活动</text>
+      </view>
+      <view class='wid text-s-mid'>日期：2018年1月27日</view>
+      <view class='wid text-s-mid'>时间：18:00 - 20:00</view>
+      <view class='wid text-s-mid'>奖项设置：</view>
+      <view class='wid text-s-mid'>一等奖：神秘大奖（1名）</view>
+      <view class='wid text-s-mid'>二等奖：心想事成奖（2名）
+      </view>
+      <view class='wid text-s-mid'>三等奖：岁岁平安奖（3名）
+      </view>
+      <view class='wid text-s-mid'>幸运奖：意外惊喜奖（5名）
+      </view>
+      <view class='wid text-s-mid'>抽奖规则：</view>
+      <view class='wid text-s-mid'>1、本次抽奖通过“乐抽奖”平台进行，系统随机选取获奖人
+      </view>
+      <view class='wid text-s-mid'>2、请上传真实姓名及头像，验明正身即可领奖
+      </view>
+    </scroll-view>
+    <view class='title'>
+      <view class='btn-apply-o'>参与活动</view>
+    </view>
+  </view>
+  <view class="view-content-down {{selected ? 'show' : 'hidden'}}">
+    <view class='title'>
+      <view class='draw-head-view' bindtap='upLoadHeadImg'>
+        <image src='{{headImg}}' class='draw-head' mode='aspectFill'></image>
+      </view>
+      <text class='text-content-first' decode='true'>姓&nbsp;&nbsp;&nbsp;&nbsp;名：{{name}}</text>
+      <text class='text-content'>手机号：{{loginId}}</text>
+      <form bindsubmit="evaSubmit" report-submit='true' class='title'>
+        <textarea class='textarea-content' placeholder='请输入祝福语...' placeholder-class='text-s-mid' bindblur="textAreaBlur" value='{{info}}'></textarea>
+        <button class='btn-apply' formType="submit">{{applyText}}</button>
+      </form>
+    </view>
+  </view>
+</view>
+<template is="wetoast" data="{{...__wetoast__}}"/>

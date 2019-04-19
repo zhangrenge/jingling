@@ -1,0 +1,156 @@
+/*index.wxss  */
+.container-mine {
+  flex-direction: column;
+  display: flex;
+  background-color: #efefef;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.parent {
+  background-color: #ffffff;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-top: 16rpx;
+}
+
+.child {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160rpx;
+  box-sizing: border-box;
+  background-color: white;
+  flex: 0 0 24.5%;
+  margin-left: 2rpx;
+  margin-top: 2rpx;
+  box-shadow: 0.5px 0.5px #dddddd ,0px 0px #dddddd inset
+}
+
+.text-pic {
+  font-size: 58rpx;
+}
+
+.text-name {
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+
+.move-parent {
+  width: 100%;
+  height: 600rpx;
+  background-color: #dddddd;
+}
+
+.move-child {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: red;
+}
+
+.text-ellipsis-title {
+  overflow : hidden;
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+
+.web-view-type {
+  width: 100%;
+  height: 100rpx;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test-circle {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 14rpx;
+  font-size: 24rpx;
+  position: relative;
+}
+
+.tab-img {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.tab-badge {
+  min-width: 30rpx;
+  min-height: 30rpx;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rpx;
+  border: 1rpx #e06664 solid;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+}
+
+.tab {
+  height: 160rpx;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #666666;
+  background-color: #ffffff;
+}
+
+.tab-item {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+
+.text-s-mid {
+  font-size: 24rpx;
+}
+
+.text-s-big {
+  font-size: 30rpx;
+}
+
+.text-c-blue {
+  color: #3192f0;
+}
+
+.text-c-gray {
+  color: #999;
+}
+
+.text-c-black {
+  color: #333;
+}
+
+.text-c-white {
+  color: #fff;
+}
+
+.mar-t-ten {
+  margin-top: 10rpx;
+}
+
+.mar-t-twenty {
+  margin-top: 20rpx;
+}
